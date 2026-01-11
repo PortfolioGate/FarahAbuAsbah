@@ -3,498 +3,835 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Farah Abu-Asbeh - HR Professional Portfolio | PHRi & Labor Law Expert">
-    <meta name="theme-color" content="#334155">
-    <title>Farah Abu-Asbeh | HR Professional</title>
+    <meta name="description" content="Farah Abu-Asbeh - HR Professional Portfolio | Elite Talent Management">
+    <meta name="theme-color" content="#0f172a">
+    <title>Farah Abu-Asbeh | HR Architect</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. ARCHITECTURAL ROOT VARIABLES --- */
+        /* * ------------------------------------------------------------------
+         * CORE ARCHITECTURE & VARIABLES
+         * ------------------------------------------------------------------
+         */
         :root {
-            /* Light Mode Defaults */
-            --primary: #334155;        /* Slate Blue - Professional base */
-            --primary-light: #475569;
-            --accent: #fb7185;         /* Dusty Rose - Human-centric accent */
-            --accent-glow: rgba(251, 113, 133, 0.4);
-            --accent-gradient: linear-gradient(135deg, #fb7185 0%, #fda4af 100%);
+            /* Palette - Refined & High Contrast */
+            --primary-dark: #020617;
+            --primary-light: #f8fafc;
             
-            --bg-light: #fff1f2;       /* Very light rose tint */
-            --bg-surface: #ffffff;     
-            --bg-glass: rgba(255, 255, 255, 0.85); 
-            --bg-hero: linear-gradient(180deg, #fff1f2 0%, #ffffff 100%);
-
-            --text-dark: #1e293b;      
-            --text-body: #64748b;      
-            --text-light: #94a3b8;
+            /* Royal Blue Theme */
+            --accent-main: #3b82f6; 
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
             
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-surface: rgba(255, 255, 255, 0.03);
+            --glass-blur: blur(20px);
+            
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-accent: #60a5fa;
 
-            /* Particles Color */
-            --particle-color: #fb7185;
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            
+            --cursor-size: 20px;
         }
 
-        /* --- DARK MODE VARIABLES --- */
-        body.dark-mode {
-            --primary: #f8fafc;          
-            --primary-light: #e2e8f0;
-            --accent: #f43f5e;            
-            
-            --bg-light: #0f172a;         
-            --bg-surface: #1e293b;       
-            --bg-glass: rgba(15, 23, 42, 0.9);
-            --bg-hero: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-
-            --text-dark: #f8fafc;        
-            --text-body: #cbd5e1;        
-            --text-light: #94a3b8;
-            
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-
-            --particle-color: #f43f5e;   
+        /* Light Mode Overrides */
+        body.light-mode {
+            --primary-dark: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --glass-surface: rgba(255, 255, 255, 0.6);
+            --accent-glow: rgba(59, 130, 246, 0.2);
         }
 
-        /* --- 2. GLOBAL RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-light); }
-        ::-webkit-scrollbar-thumb { background: var(--text-light); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-        
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; transition: background-color 0.4s ease, color 0.4s ease; }
-        a { text-decoration: none; color: inherit; transition: var(--transition-smooth); }
-        ul { list-style: none; }
-        .container { max-width: 1150px; margin: 0 auto; padding: 0 25px; position: relative; z-index: 2; }
-        .section-padding { padding: 120px 0; position: relative; }
-        .gradient-text { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-        /* --- 3. LOADER --- */
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1e293b; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out, visibility 0.5s; }
-        .loader-content { text-align: center; color: white; }
-        .data-stream { width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* --- 4. NAVIGATION --- */
-        nav { position: fixed; top: 0; width: 100%; background: var(--bg-glass); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); transition: var(--transition-smooth); padding: 5px 0; }
-        nav.scrolled { padding: 0; box-shadow: var(--shadow-sm); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; color: var(--text-dark); }
-        .nav-links { display: flex; gap: 35px; align-items: center; }
-        .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-body); position: relative; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: var(--accent-gradient); transition: var(--transition-smooth); }
-        .nav-links a:hover::after { width: 100%; }
-
-        /* Theme Toggle Button */
-        .theme-toggle { cursor: pointer; padding: 8px; border-radius: 50%; background: rgba(251, 113, 133, 0.1); color: var(--accent); display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth); width: 40px; height: 40px; border: 1px solid transparent; }
-        .theme-toggle:hover { background: var(--accent); color: white; transform: rotate(15deg); }
-
-        /* --- 5. HERO SECTION --- */
-        #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: var(--bg-hero); padding-top: 80px; transition: background 0.4s ease; }
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; pointer-events: none; }
-        
-        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 50px; position: relative; z-index: 2; width: 100%; }
-        
-        .hero-text { animation: fadeInUp 1s ease-out; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(251, 113, 133, 0.08); color: var(--accent); border-radius: 50px; border: 1px solid rgba(251, 113, 133, 0.2); font-size: 0.85rem; font-weight: 600; margin-bottom: 25px; letter-spacing: 1px; text-transform: uppercase; }
-        h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 25px; line-height: 1.15; color: var(--text-dark); letter-spacing: -1px; }
-        .hero-subtitle { font-size: 1.15rem; color: var(--text-body); margin-bottom: 40px; max-width: 600px; }
-        
-        /* Profile Image Styling */
-        .hero-image-wrapper { position: relative; display: flex; justify-content: center; animation: fadeInRight 1s ease-out 0.3s backwards; }
-        .hero-image-blob {
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: background-color 0.5s var(--ease-smooth), color 0.5s;
             position: relative;
-            width: 400px; height: 400px;
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            background: var(--bg-surface);
-            box-shadow: 0 20px 40px rgba(251, 113, 133, 0.15);
-            padding: 10px;
-            animation: blobFloat 8s ease-in-out infinite;
-            border: 1px solid rgba(251, 113, 133, 0.1);
-            transition: background 0.4s ease;
         }
-        .hero-img {
+
+        /* Noise Texture */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+            pointer-events: none; z-index: 999; opacity: 0.4;
+        }
+
+        /* * ------------------------------------------------------------------
+         * CUSTOM CURSOR
+         * ------------------------------------------------------------------
+         */
+        #cursor {
+            position: fixed; top: 0; left: 0; width: var(--cursor-size); height: var(--cursor-size);
+            border: 1px solid var(--text-primary); border-radius: 50%;
+            pointer-events: none; z-index: 10000;
+            transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background-color 0.3s;
+            mix-blend-mode: difference;
+        }
+        #cursor-dot {
+            position: fixed; top: 0; left: 0; width: 4px; height: 4px;
+            background: var(--accent-main); border-radius: 50%;
+            pointer-events: none; z-index: 10001; transform: translate(-50%, -50%);
+        }
+        body.hovering #cursor { width: 50px; height: 50px; background-color: rgba(255,255,255,0.1); border-color: transparent; backdrop-filter: blur(2px); }
+
+        /* * ------------------------------------------------------------------
+         * UI COMPONENTS
+         * ------------------------------------------------------------------
+         */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .gradient-text { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
+        .glass-panel {
+            background: var(--glass-surface);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+        }
+        .btn-main {
+            position: relative; overflow: hidden;
+            padding: 1rem 2.5rem; border-radius: 50px;
+            background: var(--text-primary); color: var(--primary-dark);
+            font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+            font-size: 0.9rem; border: none; transition: 0.4s var(--ease-smooth);
+            z-index: 1; display: inline-flex; align-items: center; gap: 10px;
+            text-decoration: none;
+        }
+        .btn-main::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--accent-gradient); transition: 0.4s var(--ease-smooth); z-index: -1;
+        }
+        .btn-main:hover::before { width: 100%; }
+        .btn-main:hover { color: white; transform: translateY(-3px); box-shadow: 0 10px 30px var(--accent-glow); }
+
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--accent-gradient);
+            z-index: 10002; width: 0%; transition: width 0.1s linear;
+        }
+
+        /* * ------------------------------------------------------------------
+         * FLOATING CV BUTTON (NEW)
+         * ------------------------------------------------------------------
+         */
+        #floating-cv {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.5s var(--ease-elastic);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+            padding: 1rem 2rem; /* Slightly compact */
+        }
+        #floating-cv.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        /* * ------------------------------------------------------------------
+         * PRELOADER
+         * ------------------------------------------------------------------
+         */
+        #preloader {
+            position: fixed; inset: 0; background: #000; z-index: 11000;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+            transition: transform 0.8s var(--ease-smooth);
+        }
+        .loader-text span {
+            display: inline-block; opacity: 0; transform: translateY(20px);
+            font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent-main);
+            animation: textReveal 0.5s forwards;
+        }
+        @keyframes textReveal { to { opacity: 1; transform: translateY(0); } }
+
+        /* * ------------------------------------------------------------------
+         * NAVIGATION (PILL STYLE)
+         * ------------------------------------------------------------------
+         */
+        nav {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px;
+            padding: 0.6rem 1rem;
+            border-radius: 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 5000; transition: all 0.4s;
+        }
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .nav-brand { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; margin-left: 10px; }
+        .nav-brand span { color: var(--accent-main); }
+        
+        .nav-links { display: flex; gap: 5px; }
+        
+        .nav-links a {
+            color: var(--text-secondary); 
+            font-size: 0.85rem; 
+            font-weight: 500;
+            transition: all 0.3s ease; 
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+        
+        .nav-links a.active, .nav-links a:hover { 
+            color: white;
+            background: var(--accent-main);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .theme-btn {
+            background: transparent; border: none; color: var(--text-primary);
+            font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+            margin-right: 10px;
+        }
+
+        /* * ------------------------------------------------------------------
+         * HERO SECTION
+         * ------------------------------------------------------------------
+         */
+        #hero {
+            min-height: 100vh; display: flex; align-items: center; position: relative;
+            padding-top: 100px; overflow: hidden;
+        }
+        #hero-canvas { position: absolute; inset: 0; z-index: 0; }
+        
+        .hero-content {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
+            position: relative; z-index: 2;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem;
+        }
+        .hero-text h1 span { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-main); }
+        .hero-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 500px; line-height: 1.8; }
+        
+        /* * ------------------------------------------------------------------
+         * VISUAL: VITAL / ORGANIC BLOB
+         * ------------------------------------------------------------------
+         */
+        .hero-visual { position: relative; display: flex; justify-content: center; }
+        
+        .profile-card {
+            width: 100%; max-width: 420px; aspect-ratio: 1/1;
+            position: relative; 
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: blob-bounce 8s ease-in-out infinite;
+            border: 2px solid rgba(255,255,255,0.05);
+            transition: all 0.5s;
+        }
+
+        @keyframes blob-bounce {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .profile-card:hover { transform: scale(1.02); }
+        .profile-card img {
             width: 100%; height: 100%; object-fit: cover;
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            filter: grayscale(10%); transition: var(--transition-smooth);
+            transform: scale(1.1); transition: 0.5s;
         }
-        .hero-image-blob:hover .hero-img { filter: grayscale(0%); transform: scale(1.02); }
-
-        .cta-btn {
-            display: inline-flex; align-items: center; padding: 16px 40px;
-            background: var(--text-dark); 
-            color: var(--bg-light);       
-            border-radius: 50px; font-weight: 600;
-            box-shadow: 0 10px 30px rgba(30, 41, 59, 0.25);
-            transition: var(--transition-smooth);
+        .profile-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%);
         }
-        .cta-btn:hover { transform: translateY(-4px); background: var(--accent); color: white; box-shadow: 0 20px 40px rgba(251, 113, 133, 0.3); }
-
-        /* --- 6. STATS & SECTIONS --- */
-        .stats-bar { background: var(--bg-surface); padding: 50px 0; border-bottom: 1px solid rgba(0,0,0,0.05); position: relative; z-index: 2; transition: background 0.4s ease; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
-        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--text-dark); display: block; line-height: 1; margin-bottom: 5px; }
-        .stat-label { font-size: 0.9rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; }
-
-        .section-header { margin-bottom: 70px; text-align: center; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; color: var(--text-dark); position: relative; display: inline-block; }
-        .section-header h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 10px auto 0; border-radius: 2px; }
-
-        .card { background: var(--bg-surface); padding: 40px 30px; border-radius: 20px; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); border: 1px solid rgba(251, 113, 133, 0.05); position: relative; overflow: hidden; height: 100%; }
-        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: rgba(251, 113, 133, 0.3); }
-        .card-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 25px; background: rgba(251, 113, 133, 0.1); width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 16px; }
-        .card h3 { color: var(--text-dark); }
-
-        /* --- 7. CERTIFICATES --- */
-        .cert-container { margin-top: 50px; text-align: center; padding-top: 40px; border-top: 1px solid rgba(251, 113, 133, 0.1); }
-        .cert-title { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; display: block; }
-        .badges-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .badge-box { 
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-            padding: 20px; border-radius: 15px; background: var(--bg-surface);
-            border: 1px solid rgba(251, 113, 133, 0.1); transition: var(--transition-smooth);
-            width: 180px;
-        }
-        .badge-box:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .badge-icon { font-size: 3rem; color: var(--accent); }
-        .badge-text { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
-
-        /* --- 8. TIMELINE --- */
-        #experience { background-color: var(--bg-surface); transition: background-color 0.4s ease; }
         
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 2px; height: 0%; background-color: var(--accent); transition: height 1.5s ease-out; }
-        .timeline.full-height::before { height: 100%; }
-        .timeline-item { display: flex; justify-content: center; padding-bottom: 60px; position: relative; opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
-        .timeline-item.visible { opacity: 1; transform: translateY(0); }
-        .timeline-content { width: 45%; background: var(--bg-light); padding: 30px; border-radius: 16px; box-shadow: var(--shadow-sm); border: 1px solid rgba(251, 113, 133, 0.05); position: relative; z-index: 1; transition: var(--transition-smooth); }
-        .timeline-content:hover { transform: scale(1.02); border-color: rgba(251, 113, 133, 0.2); }
-        .timeline-content h3 { color: var(--text-dark); font-size: 1.1rem; }
-        .company-name { display: block; font-size: 0.9rem; color: var(--text-body); margin-bottom: 10px; font-weight: 600; }
-        .role-desc { font-size: 0.9rem; color: var(--text-body); }
-        .timeline-dot { position: absolute; left: 50%; top: 35px; transform: translateX(-50%); width: 20px; height: 20px; background: var(--bg-surface); border: 5px solid var(--accent); border-radius: 50%; z-index: 2; }
-        .timeline-date { position: absolute; top: 35px; font-size: 0.9rem; font-weight: 700; color: var(--accent); }
-        .timeline-item:nth-child(odd) .timeline-content { margin-right: auto; text-align: right; }
-        .timeline-item:nth-child(even) .timeline-content { margin-left: auto; text-align: left; }
-        .timeline-item:nth-child(odd) .timeline-date { right: -50%; width: 40%; text-align: left; }
-        .timeline-item:nth-child(even) .timeline-date { left: -50%; width: 40%; text-align: right; }
+        .card-floating-badge {
+            position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%);
+            width: 80%;
+            color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 5;
+        }
 
-        /* --- 9. SKILLS TAGS --- */
-        .skill-tag { display: inline-block; padding: 8px 16px; background: var(--bg-light); border-radius: 8px; font-size: 0.85rem; margin: 5px; color: var(--text-body); font-weight: 600; border: 1px solid transparent; transition: var(--transition-smooth); }
-        .skill-tag:hover { background: var(--bg-surface); color: var(--accent); border-color: var(--accent); box-shadow: 0 4px 12px rgba(251, 113, 133, 0.15); transform: translateY(-2px); }
+        /* * ------------------------------------------------------------------
+         * STATS FLOATING
+         * ------------------------------------------------------------------
+         */
+        .stats-wrapper {
+            margin-top: -80px; position: relative; z-index: 3; margin-bottom: 100px;
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+        }
+        .stat-card {
+            padding: 2rem; text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.05); }
+        .stat-val { font-size: 3rem; font-weight: 800; color: var(--accent-main); display: block; }
+        .stat-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-top: 5px; }
 
-        /* --- 10. FOOTER --- */
-        .footer { background: #1e293b; /* Always dark slate for footer */ color: white; padding: 100px 0 30px; position: relative; overflow: hidden; }
-        .contact-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px 30px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; color: white; transition: var(--transition-smooth); margin: 10px; }
-        .contact-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+        /* * ------------------------------------------------------------------
+         * SECTIONS (Common)
+         * ------------------------------------------------------------------
+         */
+        section { padding: 100px 0; position: relative; }
+        .section-head { margin-bottom: 60px; text-align: center; }
+        .section-label { 
+            color: var(--accent-main); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 15px; display: block;
+        }
+        .section-title { font-size: 2.5rem; font-weight: 700; }
 
-        /* --- RESPONSIVE --- */
+        /* * ------------------------------------------------------------------
+         * ABOUT & SKILLS
+         * ------------------------------------------------------------------
+         */
+        .spotlight-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+        }
+        .spotlight-card {
+            padding: 40px 30px; position: relative; overflow: hidden;
+            background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px solid var(--glass-border);
+        }
+        .spotlight-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+            opacity: 0; transition: opacity 0.5s; pointer-events: none;
+        }
+        .spotlight-card:hover::before { opacity: 1; }
+        
+        .skill-pill {
+            display: inline-block; padding: 6px 14px; margin: 4px; border-radius: 20px;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            font-size: 0.8rem; color: var(--text-secondary); transition: 0.3s;
+        }
+        .skill-pill:hover { background: var(--accent-main); color: white; border-color: var(--accent-main); transform: scale(1.05); }
+
+        /* * ------------------------------------------------------------------
+         * EXPERIENCE
+         * ------------------------------------------------------------------
+         */
+        .stepper { border-left: 2px solid var(--glass-border); margin-left: 20px; padding-left: 40px; }
+        .step-item { position: relative; margin-bottom: 60px; opacity: 0; transform: translateX(-20px); transition: 0.6s all ease; }
+        .step-item.in-view { opacity: 1; transform: translateX(0); }
+        .step-marker {
+            position: absolute; left: -49px; top: 0; width: 16px; height: 16px;
+            background: var(--primary-dark); border: 2px solid var(--accent-main); border-radius: 50%;
+            transition: 0.3s;
+        }
+        .step-item:hover .step-marker { background: var(--accent-main); box-shadow: 0 0 15px var(--accent-main); }
+        .step-date { font-size: 0.9rem; color: var(--accent-main); font-weight: 600; margin-bottom: 5px; display: block; }
+        .step-role { font-size: 1.5rem; margin-bottom: 5px; }
+        .step-company { color: var(--text-secondary); font-size: 1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        
+        /* * ------------------------------------------------------------------
+         * BADGES
+         * ------------------------------------------------------------------
+         */
+        .badges-scroll { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .badge-glass {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 160px; height: 160px; border-radius: 50%;
+            background: var(--glass-surface); border: 1px solid var(--glass-border);
+            transition: 0.4s var(--ease-elastic);
+        }
+        .badge-glass:hover { transform: scale(1.1) rotate(5deg); border-color: var(--accent-main); }
+        .badge-glass i { font-size: 2.5rem; color: var(--text-primary); margin-bottom: 10px; }
+        .badge-glass span { font-size: 0.8rem; text-align: center; color: var(--text-secondary); padding: 0 10px; }
+
+        /* * ------------------------------------------------------------------
+         * FOOTER
+         * ------------------------------------------------------------------
+         */
+        footer {
+            background: #020617; padding: 80px 0 30px; position: relative; clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); margin-top: -50px;
+        }
+        .footer-cta { text-align: center; margin-bottom: 60px; }
+        .footer-cta h2 { font-size: 3.5rem; margin-bottom: 20px; }
+        
+        .contact-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap; }
+        .contact-pill {
+            padding: 15px 30px; border-radius: 50px; border: 1px solid var(--glass-border);
+            color: var(--text-secondary); transition: 0.3s; display: flex; align-items: center; gap: 10px;
+        }
+        .contact-pill:hover { background: var(--accent-main); color: white; border-color: var(--accent-main); }
+        
+        .copy-feedback {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: var(--accent-main); color: white; padding: 10px 25px; border-radius: 30px;
+            font-size: 0.9rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); opacity: 0; transition: 0.4s var(--ease-elastic); z-index: 12000;
+        }
+        .copy-feedback.active { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        .local-time {
+            position: absolute; top: 40px; right: 40px;
+            display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.9rem;
+        }
+        .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
         @media (max-width: 900px) {
-            h1 { font-size: 2.5rem; }
-            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .hero-subtitle { margin-left: auto; margin-right: auto; }
-            .hero-image-blob { width: 300px; height: 300px; margin: 0 auto; }
-            .nav-links { display: none; } /* Mobile menu hidden for simplicity */
-            .theme-toggle { position: absolute; right: 25px; top: 15px; } 
-            .timeline::before { left: 30px; }
-            .timeline-item { flex-direction: column; padding-left: 60px; text-align: left; align-items: flex-start; }
-            .timeline-content { width: 100%; text-align: left !important; margin: 0 !important; }
-            .timeline-dot { left: 30px; }
-            .timeline-date { position: relative; top: 0; left: 0 !important; width: 100%; text-align: left !important; margin-bottom: 10px; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .profile-card { margin: 0 auto 50px; max-width: 300px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            nav { width: 95%; bottom: 20px; top: auto; background: rgba(15,23,42,0.9); }
+            .local-time { display: none; }
+            #floating-cv { bottom: 20px; right: 20px; padding: 0.8rem 1.5rem; font-size: 0.85rem; }
         }
-        
-        /* Animations */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes blobFloat { 0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translateY(0); } 33% { border-radius: 60% 40% 50% 50% / 50% 40% 50% 60%; transform: translateY(-15px); } 66% { border-radius: 50% 50% 40% 60% / 60% 50% 40% 50%; transform: translateY(5px); } }
     </style>
 </head>
-<body class="dark-mode"> 
+<body>
+
+    <div class="noise-overlay"></div>
+    <div id="scroll-progress"></div>
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+    <div class="copy-feedback" id="toast">Copied to clipboard!</div>
+
+    <a href="https://raw.githubusercontent.com/PortfolioGate/FarahAbuAsbah/main/Farah%20Abu-Asbeh.pdf" 
+       target="_blank" 
+       id="floating-cv" 
+       class="btn-main hover-trigger">
+       Download CV <i class="fas fa-download"></i>
+    </a>
+
     <div id="preloader">
-        <div class="loader-content">
-            <div class="data-stream"></div>
-            <h3>Loading Profile...</h3>
+        <div class="loader-text">
+            <span>F</span><span>A</span><span>R</span><span>A</span><span>H</span>
         </div>
     </div>
 
-    <nav id="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fa-solid fa-user-tie"></i> FARAH.<span style="color:var(--accent)">ABU-ASBEH</span>
-            </div>
-            <div style="display: flex; gap: 20px; align-items: center;">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="theme-toggle" id="theme-btn" aria-label="Toggle Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+    <nav class="glass-panel" id="navbar">
+        <a href="#" class="nav-brand">Farah Abu-Asbeh<span>.</span></a>
+        <div class="nav-links">
+            <a href="#about" class="hover-trigger">About</a>
+            <a href="#experience" class="hover-trigger">Exp.</a>
+            <a href="#skills" class="hover-trigger">Skills</a>
+            <a href="#contact" class="hover-trigger">Contact</a>
         </div>
+        <button class="theme-btn hover-trigger" id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fas fa-sun"></i>
+        </button>
     </nav>
 
     <header id="hero">
-        <canvas id="hero-canvas"></canvas>
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <span class="hero-badge"><i class="fas fa-star"></i> HR Professional & Employee Relations</span>
-                <h1>Empowering Talent & <br><span class="gradient-text">Streamlining Operations</span></h1>
-                <p class="hero-subtitle">HR Specialist based in Amman, Jordan. 5+ years of expertise in full employee lifecycle management, payroll processing, labor law compliance, and problem-solving.</p>
-                <a href="#contact" class="cta-btn">Get In Touch <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
+    <style>
+        #hero a, #hero a:hover, #hero a:focus, #hero a:active { text-decoration: none; }
+    </style>
+
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="container hero-content">
+        <div class="hero-text">
+            <span class="section-label">
+                <i class="fas fa-certificate"></i> HR & Employee Relations
+            </span>
+
+            <h1>
+                Empowering <br>
+                Talent & <span>Operations</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                HR Specialist based in Amman. 
+                Merging labor law expertise with operational excellence to build stronger organizations.
+            </p>
+
+            <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+                <a href="https://raw.githubusercontent.com/PortfolioGate/FarahAbuAsbah/main/Farah%20Abu-Asbeh.pdf" 
+                   target="_blank" 
+                   class="btn-main hover-trigger">
+                    Download CV <i class="fas fa-download"></i>
+                </a>
+
+                <a href="#contact" class="btn-main hover-trigger" 
+                   style="background:transparent; border:1px solid var(--text-secondary); color:var(--text-primary);">
+                    Start Conversation <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="hero-image-wrapper">
-                <div class="hero-image-blob">
-                    <img src="https://img.freepik.com/free-photo/corporate-business-woman-working-tablet_53876-97621.jpg" alt="Farah Abu-Asbeh" class="hero-img">
+        </div>
+
+        <div class="hero-visual">
+            <div class="profile-card" id="tilt-card">
+                <img src="https://raw.githubusercontent.com/PortfolioGate/FarahAbuAsbah/refs/heads/main/Screenshot%202026-01-11%20144756.png"
+                     alt="Farah Abu-Asbeh">
+
+                <div class="card-floating-badge glass-panel" style="padding:15px; text-align:center;">
+                    <div style="font-weight:700; font-size:1.1rem;">5+ Years</div>
+                    <div style="font-size:0.8rem; opacity:0.8;">Professional Excellence</div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <div class="stats-bar" id="statsSection">
-        <div class="container stats-grid">
-            <div class="stat-item"><span class="stat-number" data-target="5">0</span><p class="stat-label">Years Experience</p></div>
-            <div class="stat-item"><span class="stat-number" data-target="2">0</span><p class="stat-label">Major Roles</p></div>
-            <div class="stat-item"><span class="stat-number" data-target="4">0</span><p class="stat-label">Certifications</p></div>
-            <div class="stat-item"><span class="stat-number" data-target="100">0</span><p class="stat-label">% Compliance</p></div>
+    <div class="container stats-wrapper">
+        <div class="glass-panel stats-grid">
+            <div class="stat-card">
+                <span class="stat-val" data-val="5">0</span>
+                <span class="stat-label">Years Exp.</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-val" data-val="100">0</span>
+                <span class="stat-label">% Compliance</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-val" data-val="2">0</span>
+                <span class="stat-label">Major Roles</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-val" data-val="4">0</span>
+                <span class="stat-label">Certifications</span>
+            </div>
         </div>
     </div>
 
-    <section id="about" class="section-padding">
+    <section id="about">
         <div class="container">
-            <div class="section-header">
-                <h2>Professional Summary</h2>
-                <p>Dedicated to Organizational Excellence.</p>
+            <div class="section-head">
+                <span class="section-label">01. Profile</span>
+                <h2 class="section-title">Professional <span class="gradient-text">Summary</span></h2>
             </div>
-            <div class="card" style="text-align: center; max-width: 900px; margin: 0 auto; border-top: 4px solid var(--accent);">
-                <p style="color: var(--text-body); font-size: 1.1rem; line-height: 1.9;">
-                    I am an <strong>HR Professional</strong> with over 5 years of experience in employee relations, payroll, compliance, and recruitment. 
-                    I am adept at problem-solving and liaising with stakeholders to ensure efficient HR operations. 
-                    My expertise includes managing workplace policies, administering benefits, and ensuring strict compliance with 
-                    Jordanian labor laws and social security regulations.
+            <div class="glass-panel" style="padding: 3rem; text-align: center; max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.25rem; line-height: 1.8; color: var(--text-secondary);">
+                    I am an <strong style="color:var(--text-primary)">HR Professional</strong> adept at problem-solving and liaising with stakeholders. 
+                    My expertise spans the full employee lifecycle, from recruitment to clearance. 
+                    I specialize in managing workplace policies, administering benefits, and ensuring strict compliance with 
+                    <span style="text-decoration: underline; text-decoration-color: var(--accent-main);">Jordanian labor laws</span> and social security regulations.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="section-padding">
+    <section id="experience">
         <div class="container">
-            <div class="section-header">
-                <h2>Work Experience</h2>
-                <p>A history of administrative and operational success.</p>
+            <div class="section-head">
+                <span class="section-label">02. Career Path</span>
+                <h2 class="section-title">Work <span class="gradient-text">History</span></h2>
             </div>
-            <div class="timeline" id="timelineEl">
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div><div class="timeline-date">Jun 2022 – Jul 2025</div>
-                    <div class="timeline-content">
-                        <h3 class="role-title">HR Officer</h3>
-                        <span class="company-name"><i class="fas fa-network-wired" style="color:var(--accent);margin-right:5px"></i> Al-Lewan Constructive Contracting Company | Amman</span>
-                        <p class="role-desc">Managed full employee lifecycle (recruitment to clearance). Oversaw payroll, social security compliance, and health insurance. Handled employee relations and provided legal support for labor disputes.</p>
-                    </div>
+            
+            <div class="stepper">
+                <div class="step-item">
+                    <div class="step-marker"></div>
+                    <span class="step-date">Jun 2022 – Jul 2025</span>
+                    <h3 class="step-role">HR Officer</h3>
+                    <div class="step-company"><i class="fas fa-building"></i> Al-Lewan Constructive Contracting Company | Amman</div>
+                    <p style="color: var(--text-secondary); max-width: 600px; line-height: 1.6;">
+                        Managed full employee lifecycle. Oversaw payroll, social security compliance, and health insurance. Handled employee relations and provided legal support for labor disputes.
+                    </p>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div><div class="timeline-date">Nov 2018 – Aug 2021</div>
-                    <div class="timeline-content">
-                        <h3 class="role-title">HR Assistant Officer</h3>
-                        <span class="company-name"><i class="fas fa-tshirt" style="color:var(--accent);margin-right:5px"></i> Tusker Apparel Ltd. | Ad-Dulayl</span>
-                        <p class="role-desc">Managed hiring and orientation. Prepared OT and leave reports for payroll. Acted as liaison with labor offices and health insurance providers. Ensured accurate salary processing and record maintenance.</p>
-                    </div>
+                <div class="step-item">
+                    <div class="step-marker"></div>
+                    <span class="step-date">Nov 2018 – Aug 2021</span>
+                    <h3 class="step-role">HR Assistant Officer</h3>
+                    <div class="step-company"><i class="fas fa-industry"></i> Tusker Apparel Ltd. | Ad-Dulayl</div>
+                    <p style="color: var(--text-secondary); max-width: 600px; line-height: 1.6;">
+                        Managed hiring and orientation. Prepared OT and leave reports. Acted as liaison with labor offices. Ensured accurate salary processing.
+                    </p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section id="skills" class="section-padding">
+    <section id="skills">
         <div class="container">
-            <div class="section-header">
-                <h2>Skills & Competencies</h2>
-                <p>A blend of soft skills and technical systems.</p>
+            <div class="section-head">
+                <span class="section-label">03. Expertise</span>
+                <h2 class="section-title">Skills & <span class="gradient-text">Education</span></h2>
             </div>
-            <div class="grid-layout" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-users-cog"></i></div>
+
+            <div class="spotlight-grid" id="skills-grid">
+                <div class="spotlight-card">
+                    <i class="fas fa-users-cog" style="font-size: 2rem; color: var(--accent-main); margin-bottom: 20px;"></i>
                     <h3>HR Operations</h3>
-                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap;">
-                        <span class="skill-tag">Recruitment</span>
-                        <span class="skill-tag">Onboarding</span>
-                        <span class="skill-tag">Employee Relations</span>
-                        <span class="skill-tag">Performance Evaluation</span>
-                        <span class="skill-tag">Conflict Resolution</span>
+                    <div style="margin-top: 15px;">
+                        <span class="skill-pill">Recruitment</span>
+                        <span class="skill-pill">Onboarding</span>
+                        <span class="skill-pill">Employee Relations</span>
+                        <span class="skill-pill">Conflict Resolution</span>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h3>Payroll & Compliance</h3>
-                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap;">
-                        <span class="skill-tag">Payroll Processing</span>
-                        <span class="skill-tag">Social Security</span>
-                        <span class="skill-tag">Labor Law</span>
-                        <span class="skill-tag">Health Insurance</span>
-                        <span class="skill-tag">Contract Management</span>
+
+                <div class="spotlight-card">
+                    <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: var(--accent-main); margin-bottom: 20px;"></i>
+                    <h3>Compliance</h3>
+                    <div style="margin-top: 15px;">
+                        <span class="skill-pill">Payroll</span>
+                        <span class="skill-pill">Social Security</span>
+                        <span class="skill-pill">Labor Law</span>
+                        <span class="skill-pill">Health Insurance</span>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Technical Systems</h3>
-                    <ul style="margin-top: 15px; font-size: 0.95rem; color: var(--text-body); list-style: none;">
-                        <li style="margin-bottom: 12px; display:flex; gap:10px;"><i class="fas fa-check-circle" style="color:var(--accent);"></i> <div><strong>Systems:</strong> Odoo, Kayan System.</div></li>
-                        <li style="margin-bottom: 12px; display:flex; gap:10px;"><i class="fas fa-check-circle" style="color:var(--accent);"></i> <div><strong>Software:</strong> Microsoft Office (Excel, Word).</div></li>
-                        <li style="margin-bottom: 12px; display:flex; gap:10px;"><i class="fas fa-check-circle" style="color:var(--accent);"></i> <div><strong>Languages:</strong> Arabic (Native), English (Very Good).</div></li>
-                    </ul>
+
+                <div class="spotlight-card">
+                    <i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--accent-main); margin-bottom: 20px;"></i>
+                    <h3>Technical</h3>
+                    <div style="margin-top: 15px;">
+                        <span class="skill-pill">Odoo</span>
+                        <span class="skill-pill">Kayan System</span>
+                        <span class="skill-pill">MS Excel</span>
+                        <span class="skill-pill">Arabic (Native)</span>
+                        <span class="skill-pill">English (Very Good)</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="cert-container">
-                <span class="cert-title">Education & Certifications</span>
-                <div class="badges-wrapper">
-                    <div class="badge-box">
-                        <i class="fas fa-graduation-cap badge-icon"></i>
-                        <span class="badge-text">B.Sc. English Literature (2018)</span>
+            <div style="margin-top: 80px;">
+                <div class="badges-scroll">
+                    <div class="badge-glass">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>B.Sc. English Lit. (2018)</span>
                     </div>
-                    <div class="badge-box">
-                        <i class="fas fa-award badge-icon"></i>
-                        <span class="badge-text">PHRi Course (50 Hours)</span>
+                    <div class="badge-glass">
+                        <i class="fas fa-award"></i>
+                        <span>PHRi Course (50 Hrs)</span>
                     </div>
-                    <div class="badge-box">
-                        <i class="fas fa-balance-scale badge-icon"></i>
-                        <span class="badge-text">Labor Legislation & Tax</span>
+                    <div class="badge-glass">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>Labor Legislation</span>
                     </div>
-                    <div class="badge-box">
-                        <i class="fas fa-hard-hat badge-icon"></i>
-                        <span class="badge-text">Occupational Safety (L2)</span>
+                    <div class="badge-glass">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Safety (L2)</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="footer">
-        <div class="container footer-content" style="text-align: center; position:relative; z-index:2">
-            <h2 style="font-size:2.5rem; margin-bottom:10px">Let's Connect</h2>
-            <p style="opacity:0.8; margin-bottom:40px">Available for HR and Administrative opportunities.</p>
-            <div class="contact-methods" style="display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-bottom:50px">
-                <a href="tel:+962796816985" class="contact-btn"><i class="fas fa-phone"></i> +962 79 681 6985</a>
-                <a href="mailto:farahasbeh@yahoo.com" class="contact-btn"><i class="fas fa-envelope"></i> farahasbeh@yahoo.com</a>
-                <a href="https://linkedin.com/in/farah-abu-asbeh" target="_blank" class="contact-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <footer id="contact">
+        <div class="local-time">
+            <div class="status-dot"></div>
+            <span>Based in Amman • <span id="time-display">00:00</span></span>
+        </div>
+
+        <div class="container footer-cta">
+            <span class="section-label">04. Contact</span>
+            <h2>Ready to <span class="gradient-text">Collaborate?</span></h2>
+            <p style="color: var(--text-secondary); margin-bottom: 40px;">Available for HR opportunities.</p>
+            
+            <div class="contact-links">
+                <button class="contact-pill hover-trigger" onclick="copyToClipboard('+962796816985')">
+                    <i class="fas fa-phone"></i> +962 79 681 6985
+                </button>
+                <button class="contact-pill hover-trigger" onclick="copyToClipboard('farahasbeh@yahoo.com')">
+                    <i class="fas fa-envelope"></i> farahasbeh@yahoo.com
+                </button>
+                <a href="https://linkedin.com/in/farah-abu-asbeh" target="_blank" class="contact-pill hover-trigger">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
             </div>
-            <p class="copyright" style="border-top:1px solid rgba(255,255,255,0.1); padding-top:30px; font-size:0.85rem; color:rgba(255,255,255,0.5)">
-                &copy; <span id="year"></span> Farah Abu-Asbeh. Professional Portfolio.
-            </p>
+
+            <div style="font-size: 0.8rem; color: var(--text-secondary); opacity: 0.5; margin-top: 50px;">
+                &copy; <span id="year"></span> Farah Abu-Asbeh. Engineered for Excellence.
+            </div>
         </div>
     </footer>
 
     <script>
-        // --- JS LOGIC WITH THEME TOGGLE ---
-        window.addEventListener('load', () => {
+        // --- 1. SYSTEM INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
             const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.visibility = 'hidden'; }, 500);
+            const spans = preloader.querySelectorAll('span');
+            let delay = 0;
+            spans.forEach(span => {
+                span.style.animationDelay = `${delay}ms`;
+                delay += 100;
+            });
+            setTimeout(() => { preloader.style.transform = 'translateY(-100%)'; }, 1200);
             document.getElementById('year').textContent = new Date().getFullYear();
+            updateTime(); setInterval(updateTime, 60000);
         });
 
-        // Theme Toggle Logic
-        const themeBtn = document.getElementById('theme-btn');
-        const icon = themeBtn.querySelector('i');
-        
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if(document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
+        // --- 2. TIME ENGINE ---
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Amman', hour: '2-digit', minute: '2-digit', hour12: true });
+            document.getElementById('time-display').textContent = timeString;
+        }
+
+        // --- 3. CURSOR & HOVER ---
+        const cursor = document.getElementById('cursor');
+        const dot = document.getElementById('cursor-dot');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0, dotX = 0, dotY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
         });
 
-        // Hero Particles (Updated to handle colors dynamically)
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                this.directionX = (Math.random() * 0.4) - 0.2; this.directionY = (Math.random() * 0.4) - 0.2; this.size = Math.random() * 2;
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
-                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-                this.x += this.directionX; this.y += this.directionY;
-            }
-            draw() { 
-                ctx.beginPath(); 
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); 
-                // Get color from CSS variable for correct theme matching
-                const color = getComputedStyle(document.body).getPropertyValue('--particle-color').trim();
-                ctx.fillStyle = color; 
-                ctx.fill(); 
-            }
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1; cursorY += (mouseY - cursorY) * 0.1;
+            dotX += (mouseX - dotX) * 0.5; dotY += (mouseY - dotY) * 0.5;
+            cursor.style.left = `${cursorX}px`; cursor.style.top = `${cursorY}px`;
+            dot.style.left = `${dotX}px`; dot.style.top = `${dotY}px`;
+            requestAnimationFrame(animateCursor);
         }
-        
-        function initParticles() { particlesArray = []; for (let i = 0; i < (canvas.height*canvas.width)/15000; i++) particlesArray.push(new Particle()); }
-        
-        function animateParticles() {
-            requestAnimationFrame(animateParticles); ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update(); particlesArray[i].draw();
-                for (let j = i; j < particlesArray.length; j++) {
-                    const dx = particlesArray[i].x - particlesArray[j].x; const dy = particlesArray[i].y - particlesArray[j].y; const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 120) { 
-                        ctx.beginPath(); 
-                        ctx.strokeStyle = `rgba(251, 113, 133, ${1 - distance/120})`; // Rose tint lines
-                        ctx.lineWidth = 0.5; 
-                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y); 
-                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y); 
-                        ctx.stroke(); 
-                    }
-                }
-            }
-        }
-        initParticles(); animateParticles();
-        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); });
+        animateCursor();
 
-        // Scroll Observers
+        document.querySelectorAll('.hover-trigger, a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // --- 4. SCROLL & OBSERVERS & FLOATING BTN ---
+        const scrollProgress = document.getElementById('scroll-progress');
+        const navbar = document.getElementById('navbar');
+        const floatingCv = document.getElementById('floating-cv'); // Floating Button Ref
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if(entry.target.classList.contains('timeline')) entry.target.classList.add('full-height');
-                    if(entry.target.classList.contains('timeline-item')) entry.target.classList.add('visible');
-                    if(entry.target.classList.contains('stat-number')) { animateValue(entry.target, 0, parseInt(entry.target.getAttribute('data-target')), 2000); observer.unobserve(entry.target); }
+                    entry.target.classList.add('in-view');
+                    if (entry.target.classList.contains('stat-val')) {
+                        animateValue(entry.target);
+                        observer.unobserve(entry.target);
+                    }
                 }
             });
-        }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
-        document.querySelectorAll('.timeline, .timeline-item, .stat-number').forEach(el => observer.observe(el));
+        }, observerOptions);
 
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
+        document.querySelectorAll('.step-item, .stat-val, .spotlight-card').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            scrollProgress.style.width = (winScroll / height) * 100 + "%";
+
+            // Navbar Blur
+            if(window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+
+            // Floating CV Visibility (Show after 500px scroll)
+            if(window.scrollY > 500) floatingCv.classList.add('visible');
+            else floatingCv.classList.remove('visible');
+
+            // Active Link State
+            document.querySelectorAll('section').forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+                if(top >= offset && top < offset + height) {
+                    document.querySelectorAll('.nav-links a').forEach(links => {
+                        links.classList.remove('active');
+                        document.querySelector('.nav-links a[href*=' + id + ']').classList.add('active');
+                    });
+                }
+            });
+        });
+
+        function animateValue(obj) {
+            const end = parseInt(obj.getAttribute('data-val'));
+            let start = 0; const duration = 2000; let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 4);
+                let val = Math.floor(ease * (end - start) + start);
                 let suffix = ''; if(end >= 5) suffix = '+'; if(end === 100) suffix = '%';
-                obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
+                obj.innerHTML = val + suffix;
                 if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
-        
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if(window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+
+        // --- 5. PARTICLES ---
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        let particlesArray;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.1;
+                this.speedX = (Math.random() * 1) - 0.5; this.speedY = (Math.random() * 1) - 0.5;
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                const dx = mouseX - this.x; const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < 100) {
+                    const force = (100 - distance) / 100;
+                    this.x -= (dx / distance) * force * 3; this.y -= (dy / distance) * force * 3;
+                }
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-secondary');
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 15000;
+            for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update(); particlesArray[i].draw();
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(148, 163, 184, ${1 - distance/100})`;
+                        ctx.lineWidth = 0.2;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles(); animateParticles();
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); });
+
+        // --- 6. UTILS ---
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('active'); setTimeout(() => toast.classList.remove('active'), 2500);
+            });
+        }
+
+        const themeBtn = document.getElementById('theme-toggle');
+        let isLight = false;
+        themeBtn.addEventListener('click', () => {
+            isLight = !isLight;
+            document.body.classList.toggle('light-mode');
+            const icon = themeBtn.querySelector('i');
+            icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
         });
     </script>
 </body>
