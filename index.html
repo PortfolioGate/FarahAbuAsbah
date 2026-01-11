@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Farah Abu-Asbeh - HR Professional Portfolio | Elite Talent Management">
+    <meta name="description" content="Farah Abu-Asbeh - HR Professional Portfolio">
     <meta name="theme-color" content="#0f172a">
-    <title>Farah Abu-Asbeh | HR Architect</title>
+    <title>Farah Abu-Asbeh | HR Professional</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -366,32 +366,105 @@
          * FOOTER
          * ------------------------------------------------------------------
          */
-        footer {
-            background: #020617; padding: 80px 0 30px; position: relative; clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); margin-top: -50px;
-        }
-        .footer-cta { text-align: center; margin-bottom: 60px; }
-        .footer-cta h2 { font-size: 3.5rem; margin-bottom: 20px; }
-        
-        .contact-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap; }
-        .contact-pill {
-            padding: 15px 30px; border-radius: 50px; border: 1px solid var(--glass-border);
-            color: var(--text-secondary); transition: 0.3s; display: flex; align-items: center; gap: 10px;
-        }
-        .contact-pill:hover { background: var(--accent-main); color: white; border-color: var(--accent-main); }
-        
-        .copy-feedback {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
-            background: var(--accent-main); color: white; padding: 10px 25px; border-radius: 30px;
-            font-size: 0.9rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); opacity: 0; transition: 0.4s var(--ease-elastic); z-index: 12000;
-        }
-        .copy-feedback.active { transform: translateX(-50%) translateY(0); opacity: 1; }
+       footer {
+    background: linear-gradient(180deg, #020617 0%, #020617 70%, #020617cc 100%);
+    padding: 90px 0 40px;
+    position: relative;
+    clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -60px;
+}
 
-        .local-time {
-            position: absolute; top: 40px; right: 40px;
-            display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.9rem;
-        }
-        .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+.footer-cta {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.footer-cta h2 {
+    font-size: 3.4rem;
+    margin-bottom: 18px;
+    color: #f8fafc;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 45px;
+    flex-wrap: wrap;
+}
+
+.contact-pill {
+    padding: 14px 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #e5e7eb;
+    background: rgba(255,255,255,0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(6px);
+    text-decoration: none;
+}
+
+.contact-pill:hover,
+.contact-pill:focus,
+.contact-pill:visited {
+    background: var(--accent-main);
+    color: #020617;
+    border-color: var(--accent-main);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+
+.copy-feedback {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--accent-main);
+    color: #020617;
+    padding: 10px 26px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+    opacity: 0;
+    transition: 0.4s var(--ease-elastic);
+    z-index: 12000;
+}
+
+.copy-feedback.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.local-time {
+    position: absolute;
+    top: 38px;
+    right: 38px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.45; }
+    100% { opacity: 1; }
+}
+
 
         /* * ------------------------------------------------------------------
          * MOBILE / RESPONSIVE OPTIMIZATIONS
@@ -498,8 +571,7 @@
             </h1>
 
             <p class="hero-subtitle">
-                HR Specialist based in Amman. 
-                Merging labor law expertise with operational excellence to build stronger organizations.
+                HR professional with 5+ years of experience in employee relations, payroll, compliance, and recruitment. Skilled in ensuring efficient HR operations and labor law compliance.
             </p>
 
             <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
@@ -545,7 +617,7 @@
                 <span class="stat-label">Major Roles</span>
             </div>
             <div class="stat-card">
-                <span class="stat-val" data-val="4">0</span>
+                <span class="stat-val" data-val="5">0</span>
                 <span class="stat-label">Certifications</span>
             </div>
         </div>
@@ -560,8 +632,8 @@
             <div class="glass-panel" style="padding: 3rem; text-align: center; max-width: 900px; margin: 0 auto;">
                 <p style="font-size: 1.25rem; line-height: 1.8; color: var(--text-secondary);">
                     I am an <strong style="color:var(--text-primary)">HR Professional</strong> adept at problem-solving and liaising with stakeholders. 
-                    My expertise spans the full employee lifecycle, from recruitment to clearance. 
-                    I specialize in managing workplace policies, administering benefits, and ensuring strict compliance with 
+                    Skilled in contract management, performance evaluation, and event organization. My expertise spans the full employee lifecycle, 
+                    from recruitment to clearance. I specialize in managing workplace policies, administering benefits, and ensuring strict compliance with 
                     <span style="text-decoration: underline; text-decoration-color: var(--accent-main);">Jordanian labor laws</span> and social security regulations.
                 </p>
             </div>
@@ -578,21 +650,23 @@
             <div class="stepper">
                 <div class="step-item">
                     <div class="step-marker"></div>
-                    <span class="step-date">Jun 2022 – Jul 2025</span>
+                    <span class="step-date">June 2022 – July 2025</span>
                     <h3 class="step-role">HR Officer</h3>
                     <div class="step-company"><i class="fas fa-building"></i> Al-Lewan Constructive Contracting Company | Amman</div>
                     <p style="color: var(--text-secondary); max-width: 600px; line-height: 1.6;">
-                        Managed full employee lifecycle. Oversaw payroll, social security compliance, and health insurance. Handled employee relations and provided legal support for labor disputes.
+                        Managed the full employee lifecycle, including recruitment, contracts, and clearances. Oversaw payroll, allowances, and social security compliance. 
+                        Conducted performance evaluations and resolved employee relations issues. Maintained HR documentation and provided legal support for labor disputes.
                     </p>
                 </div>
 
                 <div class="step-item">
                     <div class="step-marker"></div>
-                    <span class="step-date">Nov 2018 – Aug 2021</span>
+                    <span class="step-date">November 2018 – August 2021</span>
                     <h3 class="step-role">HR Assistant Officer</h3>
                     <div class="step-company"><i class="fas fa-industry"></i> Tusker Apparel Ltd. | Ad-Dulayl</div>
                     <p style="color: var(--text-secondary); max-width: 600px; line-height: 1.6;">
-                        Managed hiring and orientation. Prepared OT and leave reports. Acted as liaison with labor offices. Ensured accurate salary processing.
+                        Managed hiring processes and new hire orientation. Prepared OT, leave reports, and daily attendance for payroll. Acted as a liaison with external service providers 
+                        and labor offices. Updated payroll systems and ensured accurate salary processing while maintaining compliance with labor laws.
                     </p>
                 </div>
             </div>
@@ -615,6 +689,8 @@
                         <span class="skill-pill">Onboarding</span>
                         <span class="skill-pill">Employee Relations</span>
                         <span class="skill-pill">Conflict Resolution</span>
+                        <span class="skill-pill">Event Organization</span>
+                        <span class="skill-pill">Performance Eval</span>
                     </div>
                 </div>
 
@@ -622,10 +698,12 @@
                     <i class="fas fa-file-invoice-dollar" style="font-size: 2rem; color: var(--accent-main); margin-bottom: 20px;"></i>
                     <h3>Compliance</h3>
                     <div style="margin-top: 15px;">
-                        <span class="skill-pill">Payroll</span>
+                        <span class="skill-pill">Payroll Processing</span>
                         <span class="skill-pill">Social Security</span>
                         <span class="skill-pill">Labor Law</span>
                         <span class="skill-pill">Health Insurance</span>
+                        <span class="skill-pill">Work Injury Reports</span>
+                        <span class="skill-pill">Contract Mgmt</span>
                     </div>
                 </div>
 
@@ -633,11 +711,12 @@
                     <i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--accent-main); margin-bottom: 20px;"></i>
                     <h3>Technical</h3>
                     <div style="margin-top: 15px;">
-                        <span class="skill-pill">Odoo</span>
+                        <span class="skill-pill">Odoo System</span>
                         <span class="skill-pill">Kayan System</span>
                         <span class="skill-pill">MS Excel</span>
                         <span class="skill-pill">Arabic (Native)</span>
                         <span class="skill-pill">English (Very Good)</span>
+                        <span class="skill-pill">Problem Solving</span>
                     </div>
                 </div>
             </div>
@@ -653,12 +732,16 @@
                         <span>PHRi Course (50 Hrs)</span>
                     </div>
                     <div class="badge-glass">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Safety Supervisor (L2)</span>
+                    </div>
+                    <div class="badge-glass">
                         <i class="fas fa-balance-scale"></i>
                         <span>Labor Legislation</span>
                     </div>
                     <div class="badge-glass">
-                        <i class="fas fa-hard-hat"></i>
-                        <span>Safety (L2)</span>
+                        <i class="fas fa-search"></i>
+                        <span>Admin Investigation</span>
                     </div>
                 </div>
             </div>
